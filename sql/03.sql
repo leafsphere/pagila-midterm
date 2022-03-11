@@ -10,7 +10,7 @@ SELECT DISTINCT
 FROM film
 JOIN film_category USING (film_id)
 JOIN category USING (category_id)
-WHERE category.name='Children'
+WHERE category_id IN (SELECT category_id FROM category WHERE name='Children')
   AND rating IN ('R', 'NC-17')
 ORDER BY title;
 
