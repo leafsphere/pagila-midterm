@@ -16,7 +16,8 @@ SELECT
 FROM film
 WHERE lower(title) NOT LIKE '%f%'
   AND film_id NOT IN (
-    SELECT DISTINCT film_id
+    SELECT DISTINCT
+        film_id
     FROM film
     JOIN film_actor USING (film_id)
     JOIN actor USING (actor_id)
@@ -25,7 +26,8 @@ WHERE lower(title) NOT LIKE '%f%'
         lower(actor.last_name) LIKE '%f%'
     )
   AND film_id NOT IN (
-    SELECT DISTINCT film_id
+    SELECT DISTINCT
+        film_id
     FROM film
     JOIN inventory USING (film_id)
     JOIN rental USING (inventory_id)
